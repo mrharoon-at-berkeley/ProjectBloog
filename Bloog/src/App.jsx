@@ -1,35 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import HomePage from './HomePage';
+import './styles.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [posts, setPosts] = useState([]);
+
+  const addPost = (title, content, directory) => {
+    const newPost = { id: Date.now(), title, content, directory };
+    setPosts([...posts, newPost]);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <Header />
+      <HomePage />
+      <Body posts={posts} onAddPost={addPost} />
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+function Header() {
+  return <header>My Blog Header</header>;
+}
+
+function Body({ posts, onAddPost }) {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [directory, setDirectory] = useState('General');
+
+  const handleSubmit = () => {
+    onAddPost(title, content, directory);
+    setTitle('');
+    setContent('');
+  };
+
+  return (
+    <main>
+      <div>
+        <input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Post Title"
+        />
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Post Content"
+        />
+        <select value={directory} onChange={(e) => setDirectory(e.target.value)}>
+          <option value="General">General</option>
+          <option value="Tech">Tech</option>
+          <option value="Lifestyle">Lifestyle</option>
+          {/* Add more directories as needed */}
+        </select>
+        <button onClick={handleSubmit}>Add Post</button>
+      </div>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>
+            <h2>{post.title} ({post.directory})</h2>
+            <p>{post.content}</p>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
+}
+
+function Footer() {
+  return <footer>Blog Footer</footer>;
+}
+
+export default App;
+

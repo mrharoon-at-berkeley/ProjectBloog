@@ -1,0 +1,91 @@
+/* General styles */
+body {
+    background-color: #1a1a1a; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    font-family: monospace; /* Use monospace font */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content */
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #333; /* Darker gray */
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* Footer styles */
+  footer {
+    background-color: #333; /* Darker gray */
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  /* Main content styles */
+  main {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  /* New post styles */
+  input, textarea, select, button {
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%; /* Reduce width to 80% */
+    box-sizing: border-box;
+    border: 1px solid #555;
+    background-color: #2a2a2a; /* Slightly lighter than the background */
+    color: #e0e0e0; /* Light text */
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Posts list styles */
+  ul {
+    list-style-type: none;
+    padding: 0;
+    width: 80%; /* Reduce width to 80% */
+  }
+  
+  li {
+    border: 1px solid #555;
+    margin: 10px 0;
+    padding: 15px;
+    background-color: #2a2a2a; /* Slightly lighter than the background */
+    border-radius: 4px;
+  }
+  
+  h2 {
+    margin: 0;
+    color: #ddd;
+  }
+  
+  p {
+    margin: 10px 0;
+  }
+  
